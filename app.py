@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 genai.configure(api_key=os.environ.get("API_KEY"))
-model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 @app.route("/ask", methods=["POST"])
 def ask():
@@ -17,7 +17,7 @@ def ask():
 def home():
     return "AI Backend Running"
 
-if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+
+# IMPORTANT PART
+port = int(os.environ.get("PORT", 8080))
+app.run(host="0.0.0.0", port=port)
